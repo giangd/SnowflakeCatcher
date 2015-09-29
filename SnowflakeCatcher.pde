@@ -7,8 +7,8 @@ PImage snowflake4;
 Snowflake[] snowflakes;
 Snowflake bob = new Snowflake();
 int rectW = 50;
-int rectH = 60;
-int snowflakesKilled = 0;
+float rectH = 60;
+float snowflakesKilled = 0;
 void setup() {
   size(800, 600);
   snowflake1 = loadImage("1.png");
@@ -28,18 +28,20 @@ void setup() {
 
 void draw() {
   background(255);
+  rect(0,width,0,height);
   for (int i = 0; i < snowflakes.length; i ++) {
     snowflakes[i].run();
   }
   
   //bob.run();
   
-  stroke(255,0,0);
-  fill(255);
+  stroke(190);
+  fill(0,164,230);
   rect(constrain(mouseX-rectW/2,0,width-rectW-1),height-rectH-1,rectW,rectH);
   noStroke();
-  fill(0);
-  rect(constrain(mouseX-rectW/2+1,0,width-rectW-1),height-rectH,rectW-1,constrain(rectH-1-snowflakesKilled,height-rectH,height+rectH-1));
+  fill(255);
+  rect(constrain(mouseX-rectW/2+1,1,width-rectW),height-rectH,rectW-1,constrain(rectH-1-snowflakesKilled,0,height-1));
+  //rect(constrain(mouseX-rectW/2+1,1,width-rectW),height-rectH,rectW-1,rectH-1-snowflakesKilled);
   
 }
 
@@ -83,7 +85,7 @@ class Snowflake {
         y > height-rectH+10 && y < width-rectH) {
       dead = true;
       // println(frameCount);
-      snowflakesKilled++;
+      snowflakesKilled += 0.01;
     }
   }
 
