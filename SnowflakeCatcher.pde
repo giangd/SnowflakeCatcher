@@ -56,7 +56,7 @@ void draw() {
 }
 
 void mousePressed() {
-  if (showBucket && mouseButton == LEFT) {
+  if (showBucket) {
     showBucket = false;
     snowflakesKilled = 0;
   } else {
